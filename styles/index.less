@@ -1,0 +1,86 @@
+@import (reference) '../../../src/style/color/colors.less';
+
+
+.buttons-grid {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+}
+
+// for carousel demo
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+.spacing-container {
+  background-color: @gray-2;
+  height: auto;
+  line-height: 0;
+  border: 1px solid @gray-3;
+  div {
+    width: 100px;
+    height: 100px;
+    background-color: #0c7cff;
+    display: inline-block;
+    border: 1px solid @gray-3;
+  }
+}
+
+.custom-panel {
+  background-color: green !important;
+  color: white;
+};
+
+.color-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.color-column {
+  flex:1;
+}
+
+.color-column > div {
+  text-align: center;
+  height: 6rem;
+  line-height: 6rem;
+}
+
+.primary-color {
+  margin-bottom: 1rem;
+  height: 10rem !important;
+}
+
+.make-color(@name, @n) {
+  .@{name}-@{n} {
+    @bgcolor: "@{name}-@{n}";
+    background-color: @@bgcolor;
+  }
+}
+
+.make-pallete(@name, @n:1) when (@n <= 8) {
+  .make-color(@name, @n);
+  .make-pallete(@name, (@n+1));
+}
+
+.make-pallete(~"scouting-blue");
+.make-pallete(~"scouting-red");
+.make-pallete(~"scouting-light-blue");
+.make-pallete(~"scouting-tan");
+.make-pallete(~"scouting-warm-gray");
+.make-pallete(~"cub-scout-yellow");
+.make-pallete(~"venturing-green");
+.make-pallete(~"varsity-brown");
+.make-pallete(~"exploring-purple");
+.make-pallete(~"sea-scout-blue");
+.make-pallete(~"boy-scout-tan");
+.make-pallete(~"gray");
